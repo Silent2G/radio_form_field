@@ -81,7 +81,9 @@ class _ListBuilder<T> extends StatelessWidget {
       itemCount: list.length,
       itemBuilder: (BuildContext context, int index) {
         if (state.hasError == true && state.value == null) {
-          _scrollDown();
+          WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+            _scrollDown();
+          });
         }
         return list[index];
       },
